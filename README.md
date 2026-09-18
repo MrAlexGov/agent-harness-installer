@@ -1,5 +1,7 @@
 # agent-harness-installer
 
+[![CI](https://github.com/MrAlexGov/agent-harness-installer/actions/workflows/ci.yml/badge.svg)](https://github.com/MrAlexGov/agent-harness-installer/actions/workflows/ci.yml)
+
 CLI-генератор базового **harness** (обвязки) для AI-агента, работающего в репозитории:
 контракт-роутер, единственный источник истины по скоупу, ворота верификации, CI —
 всё разворачивается одной командой в любой проект.
@@ -76,6 +78,17 @@ bash install.sh --check                            # проверить уже �
 ```
 
 Полный список опций — `bash install.sh --help`.
+
+## Тесты
+
+`tests/smoke_test.sh` — прогоняет `--help`/`--version`, `--dry-run` по всем
+15 сочетаниям профиль×стек, обработку некорректных аргументов, `--check` до и
+после установки, идемпотентность повторного запуска и наличие ключевых файлов
+после установки. CI на каждый push дополнительно гоняет `shellcheck` по `install.sh`.
+
+```bash
+bash tests/smoke_test.sh
+```
 
 ## Реализация
 
